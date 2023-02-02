@@ -31,37 +31,41 @@ class Result extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            CircularPercentIndicator(
-              radius: 100,
-              lineWidth: 20,
-              percent: result/50,
-              center:  Text("100%"),
-              animation: true,
-              progressColor: Colors.red,
-              animationDuration: 2000,
-              backgroundColor: Colors.orangeAccent,
-            ),
-            Text(
-              'Age: $age',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-            Text(
-              'Result: ${result.toStringAsFixed(1)}',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-            Text(
-              'Gander: ${isMale ? 'Male' : 'Female'}',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-            Text(
-              'Condition: $bmi',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline3,
-            ),
-          ],
+        child: Container(
+          width: double.infinity,
+          color: Color.fromRGBO(0, 4, 55, 1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CircularPercentIndicator(
+                radius: 100,
+                lineWidth: 20,
+                percent: result / 100,
+                center: Text("100%"),
+                animation: true,
+                progressColor: Colors.red,
+                animationDuration: 2000,
+                backgroundColor: Colors.orangeAccent,
+              ),
+              Text(
+                'Age: $age',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              Text(
+                'Result: ${result.toStringAsFixed(1)}',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              Text(
+                'Gander: ${isMale ? 'Male' : 'Female'}',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              Text(
+                'Condition: $bmi',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            ],
+          ),
         ),
       ),
     );

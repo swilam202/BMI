@@ -136,7 +136,7 @@ class _HomeState extends State<Home> {
             label: 'Height',
             value: height,
             onChanged: (double val) => setState(() => height = val),
-            min: 0,
+            min: 100,
             max: 200,
             divisions: 200,
             activeColor: Colors.teal,
@@ -154,9 +154,8 @@ class _HomeState extends State<Home> {
         title: const Text('Body Mass Index'),
         centerTitle: true,
         backgroundColor: Colors.teal,
-        elevation: 100,
+        elevation: 7,
         shadowColor: Colors.white,
-
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -189,32 +188,60 @@ class _HomeState extends State<Home> {
               height: 20,
             ),
             slider(),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10), color: Colors.teal),
-              margin: const EdgeInsets.all(15),
-              alignment: Alignment.bottomCenter,
-              height: MediaQuery.of(context).size.height / 15,
-              width: double.infinity,
-              child: TextButton(
-                child: const Text('Calculate',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 30)),
-                onPressed: () {
-                  double result = weight / pow(height / 100, 2);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          Result(age: age, isMale: isMale, result: result),
-                    ),
-                  );
-                },
+            SizedBox(
+              height: 5,
+            ),
+            ElevatedButton(
+              onPressed: () {
+                double result = weight / pow(height / 100, 2);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        Result(age: age, isMale: isMale, result: result),
+                  ),
+                );
+              },
+              child: Text('Calculate'),
+              style: ButtonStyle(
+                padding: MaterialStateProperty.all(
+                  EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width / 3,
+                    vertical: MediaQuery.of(context).size.height / 50,
+                  ),
+                ),
+                backgroundColor: MaterialStateProperty.all(Colors.teal),
+                foregroundColor: MaterialStateProperty.all(Colors.black),
+                textStyle: MaterialStateProperty.all(
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
               ),
             ),
+            // Container(
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(10), color: Colors.teal),
+            //   margin: const EdgeInsets.all(15),
+            //   alignment: Alignment.bottomCenter,
+            //   height: MediaQuery.of(context).size.height / 15,
+            //   width: double.infinity,
+            //   child: TextButton(
+            //     child: const Text('Calculate',
+            //         textAlign: TextAlign.center,
+            //         style: TextStyle(
+            //             color: Colors.black,
+            //             fontWeight: FontWeight.bold,
+            //             fontSize: 30)),
+            //     onPressed: () {
+            //       double result = weight / pow(height / 100, 2);
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) =>
+            //               Result(age: age, isMale: isMale, result: result),
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),
