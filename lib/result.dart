@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class Result extends StatelessWidget {
   const Result({required this.age, required this.isMale, required this.result});
@@ -33,6 +34,16 @@ class Result extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            CircularPercentIndicator(
+              radius: 100,
+              lineWidth: 20,
+              percent: result/50,
+              center:  Text("100%"),
+              animation: true,
+              progressColor: Colors.red,
+              animationDuration: 2000,
+              backgroundColor: Colors.orangeAccent,
+            ),
             Text(
               'Age: $age',
               style: Theme.of(context).textTheme.headline3,
@@ -42,7 +53,7 @@ class Result extends StatelessWidget {
               style: Theme.of(context).textTheme.headline3,
             ),
             Text(
-              'Gander ${isMale ? 'Male' : 'Female'}',
+              'Gander: ${isMale ? 'Male' : 'Female'}',
               style: Theme.of(context).textTheme.headline3,
             ),
             Text(
