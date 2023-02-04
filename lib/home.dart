@@ -1,6 +1,7 @@
 import 'package:bmi/result.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'main.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -35,12 +36,15 @@ class _HomeState extends State<Home> {
               Icon(
                 (gander == 'male') ? Icons.male : Icons.female,
                 size: 100,
+                color: mode == ThemeMode.dark ? Colors.black : Colors.white,
               ),
               const SizedBox(
                 height: 20,
               ),
               Text((gander == 'male') ? 'Male' : 'Female',
-                  style: Theme.of(context).textTheme.headline4),
+                  style: mode == ThemeMode.light
+                      ? Theme.of(context).textTheme.headline5
+                      : Theme.of(context).textTheme.headline4),
             ],
           ),
         ),
@@ -59,12 +63,16 @@ class _HomeState extends State<Home> {
         child: Column(
           children: [
             Text((ageWeight == 'age') ? 'Age' : 'Weight',
-                style: Theme.of(context).textTheme.headline4),
+                style: mode == ThemeMode.light
+                    ? Theme.of(context).textTheme.headline5
+                    : Theme.of(context).textTheme.headline4),
             Text(
                 (ageWeight == 'age')
                     ? age.toStringAsFixed(0)
                     : weight.toStringAsFixed(1),
-                style: Theme.of(context).textTheme.headline3),
+                style: mode == ThemeMode.light
+                    ? Theme.of(context).textTheme.headline3
+                    : Theme.of(context).textTheme.headline2),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -112,7 +120,10 @@ class _HomeState extends State<Home> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Height', style: Theme.of(context).textTheme.headline4),
+          Text('Height',
+              style: mode == ThemeMode.light
+                  ? Theme.of(context).textTheme.headline5
+                  : Theme.of(context).textTheme.headline4),
           const SizedBox(
             height: 10,
           ),
@@ -121,15 +132,19 @@ class _HomeState extends State<Home> {
             children: [
               Text(
                 '${height.toInt()}',
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 45,
                     fontWeight: FontWeight.w900,
-                    color: Colors.white),
+                    color:
+                        mode == ThemeMode.light ? Colors.white : Colors.black),
               ),
               const SizedBox(
                 width: 8,
               ),
-              Text('cm', style: Theme.of(context).textTheme.headline4),
+              Text('cm',
+                  style: mode == ThemeMode.light
+                      ? Theme.of(context).textTheme.headline5
+                      : Theme.of(context).textTheme.headline4),
             ],
           ),
           Slider(
@@ -151,10 +166,15 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Body Mass Index'),
+        title: Text(
+          'Body Mass Index',
+          style: TextStyle(
+              color: mode == ThemeMode.light ? Colors.white : Colors.black,
+              fontSize: 30,
+              fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         backgroundColor: Colors.teal,
-        elevation: 7,
         shadowColor: Colors.white,
       ),
       body: Padding(
@@ -211,7 +231,8 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 backgroundColor: MaterialStateProperty.all(Colors.teal),
-                foregroundColor: MaterialStateProperty.all(Colors.black),
+                foregroundColor: MaterialStateProperty.all(
+                    mode == ThemeMode.light ? Colors.white : Colors.black),
                 textStyle: MaterialStateProperty.all(
                     TextStyle(fontWeight: FontWeight.bold, fontSize: 25)),
               ),
