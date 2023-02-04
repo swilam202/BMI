@@ -81,11 +81,11 @@ class Result extends StatelessWidget {
                     'Condition',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        color: mode == ThemeMode.light
-                            ? Colors.black
-                            : Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.w900),
+                      color:
+                          mode == ThemeMode.light ? Colors.black : Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
